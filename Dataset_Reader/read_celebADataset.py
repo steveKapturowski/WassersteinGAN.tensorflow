@@ -12,7 +12,8 @@ if utils_path not in sys.path:
     sys.path.insert(0, utils_path)
 import utils as utils
 
-DATA_URL = 'https://www.dropbox.com/sh/8oqt9vytwxb3s4r/AADIKlz8PR9zr6Y20qbkunrba/Img/img_align_celeba.zip'
+# DATA_URL = 'https://www.dropbox.com/sh/8oqt9vytwxb3s4r/AADIKlz8PR9zr6Y20qbkunrba/Img/img_align_celeba.zip'
+DATA_URL = '/Users/steven/Desktop/CelebA/Img/img_align_celeba'
 random.seed(5)
 
 
@@ -24,12 +25,13 @@ class CelebA_Dataset():
 
 
 def read_dataset(data_dir):
-    pickle_filename = "celebA.pickle"
-    pickle_filepath = os.path.join(data_dir, pickle_filename)
+    pickle_filepath = "data/celebA.pickle"
     if not os.path.exists(pickle_filepath):
         # utils.maybe_download_and_extract(data_dir, DATA_URL, is_zipfile=True)
         celebA_folder = os.path.splitext(DATA_URL.split("/")[-1])[0]
         dir_path = os.path.join(data_dir, celebA_folder)
+
+        dir_path = '/Users/steven/Desktop/CelebA/Img/img_align_celeba'
         if not os.path.exists(dir_path):
             print ("CelebA dataset needs to be downloaded and unzipped manually")
             print ("Download from: %s" % DATA_URL)
